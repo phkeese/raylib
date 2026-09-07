@@ -702,6 +702,7 @@ RLAPI void rlCheckErrors(void);                         // Check and log OpenGL 
 RLAPI void rlSetBlendMode(int mode);                    // Set blending mode
 RLAPI void rlSetBlendFactors(int glSrcFactor, int glDstFactor, int glEquation); // Set blending mode factor and equation (using OpenGL factors)
 RLAPI void rlSetBlendFactorsSeparate(int glSrcRGB, int glDstRGB, int glSrcAlpha, int glDstAlpha, int glEqRGB, int glEqAlpha); // Set blending mode factors and equations separately (using OpenGL factors)
+RLAPI void rlClearDepth(void);
 
 //------------------------------------------------------------------------------------
 // Functions Declaration - rlgl functionality
@@ -2061,6 +2062,10 @@ void rlClearColor(unsigned char r, unsigned char g, unsigned char b, unsigned ch
     float ca = (float)a/255;
 
     glClearColor(cr, cg, cb, ca);
+}
+
+void rlClear(void) {
+	glClear(GL_DEPTH_BUFFER_BIT);
 }
 
 // Clear used screen buffers (color and depth)
